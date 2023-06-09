@@ -1,4 +1,4 @@
-package merchantable;
+package Merchantable;
 public abstract class Food extends Product2  {
     private double grams;
 

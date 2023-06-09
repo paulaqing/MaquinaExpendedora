@@ -1,11 +1,10 @@
 import Exceptions.FaultException;
 import Exceptions.JamException;
-import Exceptions.NoMoneyExcption;
 import Interface.Incidence;
 import Interface.State;
-import merchantable.Drinks;
-import merchantable.GlutenFree;
-import merchantable.Product2;
+import Merchantable.Drinks;
+import Merchantable.GlutenFree;
+import Merchantable.Product2;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -74,7 +73,7 @@ public class Management {
     public ArrayList<Machine> getMachines() {
         return machines;
     }
-    public int getMachineid(int id){
+    public int getMachineId(int id){
         for (int i=0;i<machines.size();i++){
             if (machines.get(i).getId()==id){
                 return i;
@@ -83,7 +82,7 @@ public class Management {
         return -1;
     }
     public void menu(int machines){
-        this.machines.get(getMachineid(machines)).listProducts();
+        this.machines.get(getMachineId(machines)).listProducts();
     }
     public void buyProduct(int machine, int productid, Money clientMoney) {
         Money back = null;
@@ -100,7 +99,7 @@ public class Management {
                 System.out.println(e.getMessage());
             }
         }else{
-                System.out.println("Imposible comprar en máquina " + machine);
+                System.out.println("Impossible to buy on " + machine);
         }
 
     }
@@ -111,6 +110,8 @@ public class Management {
             machineInformation(m.getId());
         }
     }
+
+
 
 
 }

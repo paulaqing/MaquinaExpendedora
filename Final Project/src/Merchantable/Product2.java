@@ -1,4 +1,4 @@
-package merchantable;
+package Merchantable;
 
 public abstract class Product2 {
     protected String name;

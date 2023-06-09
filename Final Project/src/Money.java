@@ -64,10 +64,10 @@ public class Money {
     public void information(){
         for(float val:this.coins){
             if (val >= 5){
-                System.out.println("Billete de "+val+"€: "+this.getCoins(val));
+                System.out.println("Bill of "+val+"€: "+this.getCoins(val));
             }
             else{
-                System.out.println("Moneda de "+val+"€: "+this.getCoins(val));
+                System.out.println("Coin of "+val+"€: "+this.getCoins(val));
             }
         }
     }

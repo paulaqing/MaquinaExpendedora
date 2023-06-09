@@ -1,4 +1,4 @@
-package merchantable;
+package Merchantable;
 
 public class Accessories extends Product2 {
     private int boxes;

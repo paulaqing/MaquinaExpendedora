@@ -4,12 +4,12 @@ import Interface.Incidence;
 
 import java.time.LocalDate;
 
-public class NoMoneyExcption extends Exception implements Incidence {
+public class NoMoneyException extends Exception implements Incidence {
     private int idMachine;
     private int idProduct;
     private LocalDate date;
-    public NoMoneyExcption() {
-        super("No tienes dinero suficiente");
+    public NoMoneyException() {
+        super("There is no money");
         this.idMachine= idMachine;
         this.idProduct= idProduct;
         setDate();

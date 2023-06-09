@@ -1,6 +1,4 @@
-package merchantable;
-
-import merchantable.Food;
+package Merchantable;
 
 public class GlutenFree extends Food {
 

@@ -1,4 +1,4 @@
-package merchantable;
+package Merchantable;
 
 public class Drinks extends Product2 {
     private boolean alcohol;

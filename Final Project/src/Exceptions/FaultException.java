@@ -9,7 +9,7 @@ public class FaultException extends Exception implements Incidence {
     private int idProduct;
     private LocalDate date;
     public FaultException() {
-        super("Se ha producido una AVERIA. Pongase en contacto con el servicio tecnico");
+        super("There has been a fault");
         this.idMachine= idMachine;
         this.idProduct= idProduct;
         setDate();;

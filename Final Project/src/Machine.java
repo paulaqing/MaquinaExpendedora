@@ -2,7 +2,7 @@
 import Exceptions.FaultException;
 import Exceptions.JamException;
 import Interface.State;
-import merchantable.Product2;
+import Merchantable.Product2;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -55,9 +55,9 @@ public class Machine implements Salable {
         }
     }
     public void machineInformation(){
-        System.out.println("Dinero disponible:");
+        System.out.println("Available money:");
         this.money.information();
-        System.out.println("Productos disponibles:");
+        System.out.println("Available products:");
         listProducts();
     }
 
