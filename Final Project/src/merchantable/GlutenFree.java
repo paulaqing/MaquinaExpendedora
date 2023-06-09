@@ -1,6 +1,6 @@
-package Merchantable;
+package merchantable;
 
-import Merchantable.Food;
+import merchantable.Food;
 
 public class GlutenFree extends Food {
 
@@ -9,7 +9,4 @@ public class GlutenFree extends Food {
 
     }
 
-    public void upPrice(int porcentage) {
-        price = (float) (getPrice() * porcentage);
-    }
 }

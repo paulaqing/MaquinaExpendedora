@@ -1,6 +1,5 @@
-package Merchantable;
-
-public abstract class Food extends Product {
+package merchantable;
+public abstract class Food extends Product2  {
     private double grams;
 
     public Food(String name, float price, int id, int units, double grams) {
