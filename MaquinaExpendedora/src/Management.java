@@ -1,18 +1,59 @@
+import Exceptions.FaultException;
+import Exceptions.JamException;
+import Exceptions.NoMoneyException;
+import Interface.Incidence;
+import Merchantable.Drinks;
+import Merchantable.GlutenFree;
+
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class Management {
-    private ArrayList<Product>products;
-    private ArrayList<Money>money;
+    private ArrayList<Machine> machines;
+    private ArrayList<Incidence> incidences;
 
     public Management() {
-        this.products = new ArrayList<Product>();
-        this.money = new ArrayList<Money>();
-        int [] capacity= {10,10,10};
-        this.products.add(new GlutenFree("Biscuits ",1.5,capacity));
-        this.products.add(new GlutenFree("Chocolates ",1.1,capacity));
-        this.products.add(new Drinks("Coca Cola",1.05,capacity,false,200));
-        this.products.add(new GlutenFree("Sandwich ",1.75,capacity));
-        this.money.add(new Money(0.01f,new int[]{10,10,10}));
+        this.machines = new ArrayList<Machine>();
+        Money money = new Money();
+        int[] capacity = {10, 10, 10};
+        ArrayList<Product> products = new ArrayList<Product>();
+        products.add(new GlutenFree("Biscuits", 1.05f, 1, 25, 200));
+        products.add(new GlutenFree("Chocolates ", 1.1f, 2, 25, 150));
+        products.add(new Drinks("Coca Cola", 1, 3, 20, false, 200));
+        products.add(new GlutenFree("Sandwich ", 1.75f, 4, 20, 250));
+        money.insert(0.01f, 10);
+        money.insert(0.02f, 10);
+        money.insert(0.05f, 20);
+        money.insert(0.1f, 30);
+        money.insert(0.2f, 25);
+        money.insert(0.5f, 15);
+        money.insert(1.0f, 12);
+        money.insert(2.0f, 5);
+        money.insert(5.0f, 3);
+        money.insert(10.0f, 2);
+        money.insert(20.0f, 1);
+
+
+        Machine m1 = new Machine(1);
+        m1.setMoney(money);
+        m1.setProducts(products);
+
+        this.machines.add(m1);
+
+        Machine m2 = new Machine(2);
+        m2.setMoney(money);
+        m2.setProducts(products);
+
+        this.machines.add(m2);
+
+        Machine m3 = new Machine(3);
+        m3.setMoney(money);
+        m3.setProducts(products);
+
+        this.machines.add(m3);
+
+
+       /* this.money.add(new Money(0.01f,new int[]{10,10,10}));
         this.money.add(new Money(0.02f,new int[]{10,10,10}));
         this.money.add(new Money(0.05f,new int[]{10,20,15}));
         this.money.add(new Money(0.1f,new int[]{20,30,10}));
@@ -22,64 +63,46 @@ public class Management {
         this.money.add(new Money(2.0f,new int[]{5,7,5}));
         this.money.add(new Money(5.0f,new int[]{2,3,3}));
         this.money.add(new Money(10.0f,new int[]{1,2,1}));
-        this.money.add(new Money(20.0f,new int[]{3,3,3}));
-    }
-    public int [] getchange (float value,float price,int machine){
-        float[] values = {20.0f,10.0f,5.0f,2.0f,1.0f,0.5f,0.2f,0.1f,0.05f,0.02f,0.01f};
-        int [] currency= {0,0,0,0,0,0,0,0,0};
-        float change=value-price;
-        int pe=(int)price;
-        float dec=price-pe;
-        int decInteger=(int) dec;
-        float decDecimal=dec-decInteger;
-        int rest =-1;
-        int i =0;
-        do{
-            if (decInteger >= values[i]){
-                if (verifyMachineChange(machine,values[i])>0){
-                    int v=(int)values[i];
-                    rest=decInteger%v;
-                    currency[i]=decInteger/v;
-                    decInteger=rest;
-                    i++;
-                }
-
-
-            }
-
-        }while(rest>0);
-
-        i=5;
-        do{
-            if (decDecimal*100>=values[i]){
-                if (verifyMachineChange(machine,values[i])>0){
-                    int v=(int)values[i]*100;
-                    rest=(int)(decDecimal*100)%v;
-                    currency[i]=((int)(decDecimal*100))/v;
-                    decDecimal=rest;
-                    i++;
-                }
-
-            }
-        }while (rest==0);
-
-        return currency;
+        this.money.add(new Money(20.0f,new int[]{1,1,1}));*/
     }
 
+    public ArrayList<Machine> getMachines() {
+        return machines;
+    }
 
-    public int verifyMachineChange(int machine, float value){
-        for (Money m :this.money){
-            if (m.getValue()==value){
-                return m.getValues()[machine];
+    public int getMachineByID(int id) {
+        for (int i = 0; i > machines.size(); i++) {
+            if (this.machines.get(i).getId() == id) {
+                return i;
             }
         }
-        return 0;
+        return -1;
     }
 
-    public void menu(){
-        for (int i = 0; i < products.size(); i++) {
-            System.out.println(i+" "+products.get(i).getName()+" "+products.get(i).getPrice()+ products.get(i).getAmount());
+    public void buyProduct(int machine, int productId, Money clientMoney) {
+        Money back = null;
+        DecimalFormat format = new DecimalFormat("#.00");
+        if (this.getMachines().get(machine).getState() == State.NORMAL) {
+            try {
+                back = this.machines.get(machine).buyProduct(productId, clientMoney);
+                System.out.println("Thank you for your purchase, your change is: " + format.format(back.getTotal()));
+            } catch (JamException e) {
+                this.incidences.add(e);
+                System.out.println(e.getMessage());
+            } catch (FaultException e) {
+                this.incidences.add(e);
+                System.out.println(e.getMessage());
+            } catch (NoMoneyException e) {
+                System.out.println(e.getMessage());
+            }
+        }else{
+            System.out.println("Impossible to buy in machine "+machine);
         }
+
+    }
+
+    public void menu(int machines) {
+        this.machines.get(getMachineByID(machines)).listProducts();
     }
 
 

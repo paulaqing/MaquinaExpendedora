@@ -1,3 +1,5 @@
 public enum State {
-    JAM, FAULT, NO_STOCK, NO_CHANGE, NORMAL
+    JAM, FAULT, NO_STOCK, NO_CHANGE, NORMAL;
+
+
 }

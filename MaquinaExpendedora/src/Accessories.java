@@ -1,8 +1,8 @@
-public class Accessories extends Product{
+public class Accessories extends Product {
     private int boxes;
 
-    public Accessories(int id, String name, double price, int boxes) {
-        super( name, price, units);
+    public Accessories(String name, float price, int id, int units, int boxes) {
+        super(name, price, id, units);
         this.boxes = boxes;
     }
 }

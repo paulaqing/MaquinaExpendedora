@@ -1,28 +1,16 @@
 public abstract class Product {
 
-    protected int id;
     protected String name;
-    protected double price;
+    protected float price;
+    protected int id;
     protected int units;
 
-    public Product(int id, String name, double price) {
 
-        this.id = id;
+    public Product(String name, float price, int id, int units) {
         this.name = name;
         this.price = price;
-        this.units = 10;
-    }
-
-    public Product(int id, String name, double price, int[] amount) {
-
         this.id = id;
-        this.name = name;
-        this.price = price;
-        this.units = amount;
-    }
-
-    public int getId() {
-        return id;
+        this.units = units;
     }
 
     public String getName() {
@@ -37,21 +25,33 @@ public abstract class Product {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public int getUnits() {
-        return this.units[i];
+        return units;
     }
 
-    public void setUnits(int i, int value) {
-        this.units[i] = value;
+    public void setUnits(int units) {
+        this.units = units;
     }
 
-    public void sell(int i) {
-        this.amount[i]--;
+    @Override
+    public String toString() {
+        return "Product{" +
+                "name='" + name + '\'' +
+                ", price=" + price +
+                ", id=" + id +
+                ", units=" + units +
+                '}';
     }
-
-
 }
