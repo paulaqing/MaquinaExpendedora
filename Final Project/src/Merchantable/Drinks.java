@@ -1,6 +1,6 @@
 package Merchantable;
 
-public class Drinks extends Product2 {
+public class Drinks extends Product {
     private boolean alcohol;
     private double milimeters;
 

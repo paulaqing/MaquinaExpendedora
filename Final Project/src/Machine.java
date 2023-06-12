@@ -2,19 +2,22 @@
 import Exceptions.FaultException;
 import Exceptions.JamException;
 import Interface.State;
-import Merchantable.Product2;
+import Merchantable.Drinks;
+import Merchantable.Gluten;
+import Merchantable.GlutenFree;
+import Merchantable.Product;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 public class Machine implements Salable {
     private int id;
-    private ArrayList<Product2> products;
+    private ArrayList<Product> products;
     private Money money;
     private State state;
     public Machine(int id) {
         this.id = id;
-        this.products = new ArrayList<Product2>();
+        this.products = new ArrayList<Product>();
         this.state = State.NORMAL;
     }
 
@@ -26,11 +29,11 @@ public class Machine implements Salable {
         this.id = id;
     }
 
-    public ArrayList<Product2> getProducts() {
+    public ArrayList<Product> getProducts() {
         return products;
     }
 
-    public void setProducts(ArrayList<Product2> products) {
+    public void setProducts(ArrayList<Product> products) {
         this.products = products;
     }
 
@@ -50,7 +53,7 @@ public class Machine implements Salable {
         this.state = state;
     }
     public void listProducts(){
-        for(Product2 product:this.products){
+        for(Product product:this.products){
             System.out.println(product.toString());
         }
     }
@@ -123,11 +126,21 @@ public class Machine implements Salable {
         return State.NORMAL;
     }
     public float getproductPrice(int productId){
-        for(Product2 product:this.products){
+        for(Product product:this.products){
             if(product.getId()==productId){
                 return (float) product.getPrice();
             }
         }
         return -1;
 }
+
+    public void addProduct(Gluten gluten) {
+        
+    }
+
+    public void addProduct(Drinks drinks) {
+    }
+
+    public void addProduct(GlutenFree glutenFree) {
+    }
 }

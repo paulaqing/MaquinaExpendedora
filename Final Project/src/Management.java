@@ -4,7 +4,7 @@ import Interface.Incidence;
 import Interface.State;
 import Merchantable.Drinks;
 import Merchantable.GlutenFree;
-import Merchantable.Product2;
+import Merchantable.Product;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ public class Management {
         this.machines = new ArrayList<Machine>();
       Money dinero = new Money();
         int [] capacity= {10,10,10};
-        ArrayList<Product2>products= new ArrayList<Product2>();
+        ArrayList<Product>products= new ArrayList<Product>();
         ArrayList<Drinks>drinks= new ArrayList<Drinks>();
         products.add(new GlutenFree("Biscuits",1.05f,1,25,200));
         products.add(new GlutenFree("Chocolates ",1.1f,2,25,150));

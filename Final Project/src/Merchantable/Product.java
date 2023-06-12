@@ -1,13 +1,13 @@
 package Merchantable;
 
-public abstract class Product2 {
+public abstract class Product {
     protected String name;
     protected float price;
     protected int id;
     protected int units;
 
 
-    public Product2(String name, float price, int id, int units) {
+    public Product(String name, float price, int id, int units) {
         this.name = name;
         this.price = price;
         this.id = id;
