@@ -1,8 +1,5 @@
 import Interface.State;
-import Merchantable.Drinks;
-import Merchantable.Food;
-import Merchantable.Gluten;
-import Merchantable.GlutenFree;
+import Merchantable.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -20,16 +17,18 @@ class MachineTest {
         money.insert(20.0f, 10);
         machine.setMoney(money);
 
-        Gluten gluten = new Gluten("Bread", 1.5f, 1, 10,  500.0f);
-        Drinks drinks = new Drinks("Coca Cola", 1.5f, 1, 10, false, 500.0f);
-        GlutenFree glutenFree = new GlutenFree("Biscuits", 1.5f, 1, 10,  500.0f);
-
+        Product bread = new Gluten("Bread", 1.0f, 1, 10, 500.f);
+        Product cocaCola = new Drinks("Coca Cola", 1.5f, 1, 10, false, 500.0f);
+        Product biscuits = new GlutenFree("Biscuits", 2.0f, 1, 10, 500.f);
+        machine.getProducts().add(bread);
+        machine.getProducts().add(cocaCola);
+        machine.getProducts().add(biscuits);
 
     }
 
     @Test
     void getProducts() {
-        assertEquals("Bread, Coca Cola, Biscuits", machine.getProducts().size());
+        assertEquals(3, machine.getProducts().size());
     }
 
     @Test
