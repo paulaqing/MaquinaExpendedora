@@ -7,7 +7,7 @@ class ManagementTest {
 Management management=new Management();
     @BeforeEach
     void setUp() {
-
+        Management management=new Management();
     }
 
 
