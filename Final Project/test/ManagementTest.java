@@ -4,16 +4,17 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ManagementTest {
-Management management=new Management();
+    Management management = new Management();
+
     @BeforeEach
     void setUp() {
-        Management management=new Management();
+        Management management = new Management();
     }
 
 
     @Test
     void getMachineId() {
-        assertEquals(3,management.getMachineId(3));
+        assertEquals(3, management.getMachineId(3));
 
     }
 
@@ -24,8 +25,8 @@ Management management=new Management();
         client.insert(5.0f, 1);
 
         management.buyProduct(2, 1, client);
-        float moneyNew=management.getMachines().get(2).getMoney().getTotal();
-        assertEquals(moneyOld+1.5f,moneyNew);
+        float moneyNew = management.getMachines().get(2).getMoney().getTotal();
+        assertEquals(moneyOld + 1.5f, moneyNew);
 
     }
 }
