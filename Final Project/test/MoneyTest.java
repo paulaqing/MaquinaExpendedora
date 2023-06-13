@@ -3,6 +3,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class MoneyTest {
 
     Money money = new Money();
+
     @org.junit.jupiter.api.BeforeEach
     void setUp() {
 
@@ -10,7 +11,7 @@ class MoneyTest {
         money.insert(2.0f, 5);
         money.insert(5.0f, 10);
         money.insert(20.0f, 10);
-            }
+    }
 
     @org.junit.jupiter.api.Test
     void getTotal() {
