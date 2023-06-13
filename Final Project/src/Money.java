@@ -32,8 +32,8 @@ public class Money {
 
     public float getTotal(){
         float total=0;
-        for(int i=0;i<coins.length;i++){
-            total+=coins[i]*amount[i];
+        for(float val:this.coins){
+            total+=val*this.getCoins(val);
         }
         return total;
     }
